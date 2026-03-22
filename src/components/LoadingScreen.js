@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence, useAnimation } from 'framer-motion'
 import Image from 'next/image'
 
@@ -8,7 +8,6 @@ export default function LoadingScreen({ onComplete }) {
   const [progress, setProgress] = useState(0)
   const [phase, setPhase] = useState(0) // 0=loading, 1=complete, 2=exit
   const shimmerControls = useAnimation()
-  const logoControls = useAnimation()
 
   // ── Progress counter ──────────────────────────────────────────────
   useEffect(() => {
@@ -22,28 +21,34 @@ export default function LoadingScreen({ onComplete }) {
         requestAnimationFrame(raf)
       } else {
         setPhase(1)
-        // Shimmer on complete
-        shimmerControls.start({
-          x: ['−110%', '110%'],
-          transition: { duration: 0.7, ease: 'easeInOut' },
-        })
         setTimeout(() => setPhase(2), 600)
         setTimeout(onComplete, 1300)
       }
     }
     requestAnimationFrame(raf)
-  }, [onComplete, shimmerControls])
+  }, [onComplete])
 
-  // ── Shimmer sweep on mount (after logo reveals) ───────────────────
+  // ── Shimmer sweep: once on logo reveal, once when loading completes ─
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // On-mount shimmer (after logo slides in)
+    const initialSweep = setTimeout(() => {
       shimmerControls.start({
         x: ['-110%', '110%'],
         transition: { duration: 0.9, ease: 'easeInOut' },
       })
-    }, 1100) // fires after logo reveal + slight pause
-    return () => clearTimeout(timer)
+    }, 1100)
+    return () => clearTimeout(initialSweep)
   }, [shimmerControls])
+
+  useEffect(() => {
+    // Shimmer again when loading finishes
+    if (phase === 1) {
+      shimmerControls.start({
+        x: ['-110%', '110%'],
+        transition: { duration: 0.7, ease: 'easeInOut' },
+      })
+    }
+  }, [phase, shimmerControls])
 
   return (
     <AnimatePresence>
