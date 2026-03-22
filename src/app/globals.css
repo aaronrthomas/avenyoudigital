@@ -1,26 +1,86 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Satoshi:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Avenyou Style Guide Colors */
+  --white:      #FFFFFF;
+  --cream:      #F4F7ED;
+  --lime:       #C8E44A;
+  --navy:       #1A1F3A;
+  --navy-dark:  #0D1126;
+  --green:      #4CAF72;
+  --green-dark: #00304C;
+  --purple:     #6B2FDB;
+  --purple-light: #8B5CF6;
+  --purple-glow: rgba(107, 47, 219, 0.15);
+  --text-dark:  #111827;
+  --text-muted: #6B7280;
+  --border:     #E5E7EB;
+  --bg-card:    #F8F9FC;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: auto;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--white);
+  color: var(--text-dark);
+  font-family: 'Satoshi', 'Montserrat', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--white);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--purple);
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--purple);
+  color: white;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(107,47,219,0.3); }
+  70% { box-shadow: 0 0 0 14px rgba(107,47,219,0); }
+  100% { box-shadow: 0 0 0 0 rgba(107,47,219,0); }
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  50% { transform: scale(1.2) rotate(20deg); opacity: 0.7; }
 }
