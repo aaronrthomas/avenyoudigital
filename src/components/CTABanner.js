@@ -8,7 +8,7 @@ export default function CTABanner() {
       id="contact"
       style={{
         background: 'var(--purple)',
-        padding: '5rem 3rem',
+        padding: 'clamp(3rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem)',
         textAlign: 'center',
       }}
     >

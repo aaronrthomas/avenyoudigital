@@ -48,7 +48,7 @@ export default function Services() {
       id="services"
       style={{
         background: 'var(--white)',
-        padding: '5rem 3rem',
+        padding: 'clamp(3rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem)',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -108,8 +108,21 @@ export default function Services() {
             background: 'var(--navy)',
           }} />
 
+          <style>{`
+        @media (max-width: 900px) {
+          #services .cards-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 640px) {
+          .services-footer-bar {
+            margin-left: -1.25rem !important;
+            margin-right: -1.25rem !important;
+            padding-left: 1.25rem !important;
+            padding-right: 1.25rem !important;
+          }
+        }
+      `}</style>
           {/* Cards grid */}
-          <div style={{
+          <div className="cards-grid" style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
             gap: '1.5rem',
@@ -313,7 +326,7 @@ export default function Services() {
         </div>
 
         {/* Progress indicator */}
-        <div style={{
+        <div className="services-footer-bar" style={{
           background: 'var(--navy)',
           padding: '1.75rem 0 0',
           marginLeft: '-3rem', marginRight: '-3rem',

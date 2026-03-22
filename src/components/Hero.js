@@ -77,10 +77,10 @@ export default function Hero() {
       style={{
         background: 'var(--white)',
         minHeight: '100vh',
-        paddingTop: '10.5rem',
+        paddingTop: '9rem',
         paddingBottom: '4rem',
-        paddingLeft: '3rem',
-        paddingRight: '3rem',
+        paddingLeft: 'clamp(1.25rem, 5vw, 3rem)',
+        paddingRight: 'clamp(1.25rem, 5vw, 3rem)',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -169,6 +169,7 @@ export default function Hero() {
 
           {/* Top-right description text — absolutely positioned */}
           <motion.p
+            className="hero-abs-desc"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.45 }}
@@ -209,6 +210,7 @@ export default function Hero() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', lineHeight: 1, position: 'relative', zIndex: 2 }}>
               {/* Sparkle left */}
               <motion.div
+                className="hero-row1-sparkle"
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3, type: 'spring' }}
@@ -219,6 +221,7 @@ export default function Hero() {
 
               {/* Floating person photo */}
               <motion.div
+                className="hero-row1-avatar"
                 initial={{ opacity: 0, scale: 0.8, x: -20 }}
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 transition={{ duration: 0.65, delay: 0.5 }}
@@ -264,7 +267,7 @@ export default function Hero() {
                 style={{
                   fontFamily: 'Montserrat',
                   fontWeight: 900,
-                  fontSize: 'clamp(4.5rem, 10vw, 9.5rem)',
+                  fontSize: 'clamp(2.8rem, 10vw, 9.5rem)',
                   color: 'var(--navy)',
                   letterSpacing: '-0.02em',
                   lineHeight: 0.95,
@@ -306,7 +309,7 @@ export default function Hero() {
                 style={{
                   fontFamily: 'Montserrat',
                   fontWeight: 900,
-                  fontSize: 'clamp(4.5rem, 10vw, 9.5rem)',
+                  fontSize: 'clamp(2.8rem, 10vw, 9.5rem)',
                   color: 'var(--navy)',
                   letterSpacing: '-0.02em',
                   lineHeight: 0.95,
@@ -322,6 +325,7 @@ export default function Hero() {
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.75 }}
                 whileHover={{ scale: 1.03 }}
+                className="hero-video-pill"
                 style={{
                   height: 88,
                   width: 280,
@@ -397,12 +401,15 @@ export default function Hero() {
           </div>
 
           {/* ── BOTTOM ROW: description + buttons | spinning badge ── */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'flex-end',
-            justifyContent: 'space-between',
-            marginTop: '2.5rem',
-          }}>
+          <div
+            className="hero-bottom-row"
+            style={{
+              display: 'flex',
+              alignItems: 'flex-end',
+              justifyContent: 'space-between',
+              marginTop: '2.5rem',
+            }}
+          >
             {/* Left: description + CTA */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -467,6 +474,7 @@ export default function Hero() {
 
             {/* Right: Spinning circular badge */}
             <motion.div
+              className="hero-spinning-badge"
               initial={{ opacity: 0, scale: 0, rotate: -60 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 0.8, delay: 1.05, type: 'spring', stiffness: 90 }}
@@ -535,8 +543,19 @@ export default function Hero() {
           100% { box-shadow: 0 0 0 0 rgba(107,47,219,0); }
         }
         @media (max-width: 900px) {
-          section#hero { padding-left: 1.5rem; padding-right: 1.5rem; }
+          section#hero { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
           .hero-spline-overlay { display: none !important; }
+          .hero-abs-desc { display: none !important; }
+          .hero-video-pill { width: 200px !important; height: 68px !important; }
+        }
+        @media (max-width: 640px) {
+          .hero-bottom-row { flex-direction: column !important; align-items: flex-start !important; gap: 2rem !important; }
+          .hero-spinning-badge { width: 110px !important; height: 110px !important; align-self: flex-end; }
+          .hero-video-pill { display: none !important; }
+        }
+        @media (max-width: 480px) {
+          .hero-row1-sparkle { display: none !important; }
+          .hero-row1-avatar  { display: none !important; }
         }
       `}</style>
     </section>

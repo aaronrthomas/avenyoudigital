@@ -28,7 +28,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" style={{ background: 'var(--white)', padding: '5rem 3rem' }}>
+    <section id="projects" style={{ background: 'var(--white)', padding: 'clamp(3rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem)' }}>
       <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
         {/* Header */}
         <motion.h2

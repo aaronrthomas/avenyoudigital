@@ -84,3 +84,18 @@ body {
   0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
   50% { transform: scale(1.2) rotate(20deg); opacity: 0.7; }
 }
+
+/* ── Global mobile rules ──────────────────────────────── */
+html {
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Hide custom cursor on touch devices */
+@media (pointer: coarse) {
+  #custom-cursor { display: none !important; }
+}

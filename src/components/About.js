@@ -14,7 +14,7 @@ export default function About() {
       id="about"
       style={{
         background: 'var(--navy)',
-        padding: '6rem 3rem',
+        padding: 'clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 3rem)',
         position: 'relative',
         overflow: 'hidden',
       }}

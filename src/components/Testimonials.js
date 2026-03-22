@@ -31,7 +31,7 @@ export default function Testimonials() {
   const visible = testimonials.slice(currentPage * perPage, currentPage * perPage + perPage)
 
   return (
-    <section style={{ background: 'var(--white)', padding: '5rem 3rem' }}>
+    <section style={{ background: 'var(--white)', padding: 'clamp(3rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem)' }}>
       <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
         {/* Header */}
         <motion.h2
@@ -59,6 +59,7 @@ export default function Testimonials() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
+            className="testimonials-grid"
             style={{
               display: 'grid',
               gridTemplateColumns: `repeat(${Math.min(visible.length, 2)}, 1fr)`,
@@ -158,6 +159,12 @@ export default function Testimonials() {
           </motion.button>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .testimonials-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+        }
+      `}</style>
     </section>
   )
 }

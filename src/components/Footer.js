@@ -6,7 +6,7 @@ const footerLinks = ['About', 'Services', 'Pricing', 'Blog', 'Contact']
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#000000', padding: '3.5rem 3rem 1.5rem' }}>
+    <footer style={{ background: '#000000', padding: 'clamp(2.5rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 3rem) 1.5rem' }}>
       <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
         {/* Logo */}
         <motion.div
@@ -16,7 +16,7 @@ export default function Footer() {
           style={{ marginBottom: '2rem' }}
         >
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <img src="/White Logo.png" alt="Avenyou Digital Studios" width={340} height={106} style={{ display: 'block' }} />
+            <img src="/White Logo.png" alt="Avenyou Digital Studios" style={{ display: 'block', width: '100%', maxWidth: '280px', height: 'auto' }} />
           </div>
         </motion.div>
 
