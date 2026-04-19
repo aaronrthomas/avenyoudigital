@@ -15,20 +15,29 @@ const services = [
   },
   {
     id: '02',
-    title: 'Python Development',
+    title: 'Product Design',
     desc: 'From data pipelines to AI integrations — we build robust Python backends that scale effortlessly.',
     bg: 'linear-gradient(135deg, #1a0a3a, #2a0a4a)',
     emoji: '🐍',
-    features: ['Django / FastAPI', 'AI & ML Pipelines', 'REST & GraphQL', 'Cloud Deploy'],
+    features: ['Figma', 'UI/UX Design', 'Wireframing', 'Prototyping', 'UX Research'],
     accent: '#9c6cbf',
   },
   {
     id: '03',
-    title: 'Android Development',
+    title: 'Video Editing',
     desc: 'Native and cross-platform Android apps engineered for speed, reliability, and delightful UX.',
     bg: 'linear-gradient(135deg, #0a1530, #1a2040)',
     emoji: '📱',
-    features: ['Kotlin / Compose', 'Offline-First', 'Push Notifications', 'Play Store Release'],
+    features: ['Adobe Premiere Pro', 'Adobe After Effects', 'Color Grading', 'Motion Graphics'],
+    accent: '#4a9eff',
+  },
+  {
+    id: '04',
+    title: 'Graphic Design',
+    desc: 'Native and cross-platform Android apps engineered for speed, reliability, and delightful UX.',
+    bg: 'linear-gradient(135deg, #0a1530, #1a2040)',
+    emoji: '📱',
+    features: ['Adobe Photoshop', 'Adobe Illustrator', 'Branding', 'Marketing Materials'],
     accent: '#4a9eff',
   },
 ]
@@ -47,78 +56,21 @@ export default function Services() {
       ref={ref}
       id="services"
       style={{
-        background: 'var(--white)',
+        background: 'var(--navy)',
         padding: 'clamp(3rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem)',
         position: 'relative',
-        overflow: 'hidden',
+        // overflow: 'hidden',
       }}
     >
       <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
-        {/* Section header */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'flex-end',
-          justifyContent: 'space-between',
-          marginBottom: '0.75rem',
-        }}>
-          <div>
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              style={{
-                fontFamily: 'Montserrat',
-                fontWeight: 900,
-                fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
-                color: 'var(--navy)',
-                lineHeight: 1.15,
-              }}
-            >
-              OUR PROVIDED<br />
-              <span style={{ color: 'var(--purple)' }}>QUALITY</span>{' '}
-              <span style={{ color: 'var(--navy)' }}>SERVICES</span>
-            </motion.h2>
-          </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z" fill="var(--navy)" />
-            </svg>
-            <motion.a
-              href="#"
-              whileHover={{ textDecoration: 'underline' }}
-              style={{ color: 'var(--purple)', fontWeight: 700, fontFamily: 'Satoshi', fontSize: '0.95rem', textDecoration: 'none' }}
-            >
-              View All
-            </motion.a>
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div style={{ height: '1px', background: 'var(--border)', marginBottom: '3rem' }} />
 
         {/* Cards */}
         <div style={{ position: 'relative' }}>
-          {/* Navy bottom stripe */}
-          <div style={{
-            position: 'absolute',
-            bottom: 0, left: '-3rem', right: '-3rem',
-            height: '55%',
-            background: 'var(--navy)',
-          }} />
-
           <style>{`
         @media (max-width: 900px) {
           #services .cards-grid { grid-template-columns: 1fr !important; }
-        }
-        @media (max-width: 640px) {
-          .services-footer-bar {
-            margin-left: -1.25rem !important;
-            margin-right: -1.25rem !important;
-            padding-left: 1.25rem !important;
-            padding-right: 1.25rem !important;
-          }
+          #services .cards-grid > div { height: auto !important; min-height: 340px; }
         }
       `}</style>
           {/* Cards grid */}
@@ -219,8 +171,8 @@ export default function Services() {
                       display: 'flex', alignItems: 'center', gap: '0.3rem',
                     }}>
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
-                        <path d="M1 4v6h6M23 20v-6h-6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M1 4v6h6M23 20v-6h-6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                       CLICK TO FLIP
                     </div>
@@ -325,40 +277,7 @@ export default function Services() {
           </div>
         </div>
 
-        {/* Progress indicator */}
-        <div className="services-footer-bar" style={{
-          background: 'var(--navy)',
-          padding: '1.75rem 0 0',
-          marginLeft: '-3rem', marginRight: '-3rem',
-          paddingLeft: '3rem', paddingRight: '3rem',
-        }}>
-          <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
-            <div style={{ position: 'relative', height: 4, background: 'rgba(255,255,255,0.15)', borderRadius: 2, marginBottom: '0.75rem' }}>
-              <motion.div
-                animate={{ width: `${((active + 1) / services.length) * 100}%` }}
-                transition={{ duration: 0.4 }}
-                style={{ height: '100%', background: 'var(--purple)', borderRadius: 2 }}
-              />
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              {services.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => { setActive(i); setFlipped((prev) => ({ ...prev, [i]: !prev[i] })) }}
-                  style={{
-                    background: 'none', border: 'none',
-                    fontFamily: 'Montserrat', fontWeight: 700, fontSize: '0.8rem',
-                    color: active === i ? 'var(--purple)' : 'rgba(255,255,255,0.4)',
-                    padding: '0.25rem 0.5rem',
-                    transition: 'color 0.2s',
-                  }}
-                >
-                  {String(i + 1).padStart(2, '0')}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
   )

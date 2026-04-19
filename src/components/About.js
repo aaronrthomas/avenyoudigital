@@ -72,8 +72,9 @@ export default function About() {
 
             {[
               { label: 'Web Development', pct: 95 },
-              { label: 'Mobile Development', pct: 88 },
+              { label: 'Video Editing', pct: 88 },
               { label: 'UI/UX Design', pct: 92 },
+              { label: 'Graphic Design', pct: 92 },
             ].map((bar, i) => (
               <motion.div
                 key={i}
@@ -111,12 +112,12 @@ export default function About() {
             >
               <strong style={{ color: 'white', fontFamily: 'Montserrat' }}>Customer Success Is Our Goal.</strong>
               <br /><br />
-              We believe great software goes beyond code. It is about understanding your business 
-              needs, crafting intuitive experiences, and delivering solutions that create lasting 
+              We believe great software goes beyond code. It is about understanding your business
+              needs, crafting intuitive experiences, and delivering solutions that create lasting
               impact for your users and your bottom line.
             </motion.p>
 
-            <div style={{ display: 'flex', gap: '2.5rem' }}>
+            <div className="about-stats" style={{ display: 'flex', gap: '2.5rem' }}>
               {[
                 { num: '8+', label: 'Years Experience' },
                 { num: '200+', label: 'Projects Done' },
@@ -139,7 +140,10 @@ export default function About() {
       </div>
 
       <style>{`
-        @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; } }
+        @media (max-width: 768px) {
+          .about-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+          .about-stats { flex-wrap: wrap !important; gap: 1.5rem !important; }
+        }
       `}</style>
     </section>
   )

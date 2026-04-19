@@ -1,27 +1,37 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const projects = [
   {
     title: 'Web Development',
-    desc: 'Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules.',
+    desc: 'We craft pixel-perfect, high-performance websites that look stunning and convert visitors into customers.',
     side: 'right',
-    emoji: '🖥️',
+    image: '/project-web-dev.png',
+    link: 'https://bannned.vercel.app/pages/demon/index.html',
     bg: 'linear-gradient(135deg, #1a1a2e, #0d0d1e)',
   },
   {
-    title: 'Mobile Apps Development',
-    desc: 'Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules.',
+    title: 'Graphic Design',
+    desc: 'Bold visual identities, marketing materials, and brand systems that make a lasting impression.',
     side: 'left',
-    emoji: '📱',
+    emoji: '🎨',
     bg: 'linear-gradient(135deg, #0d0d1e 0%, #1a0a2e 100%)',
   },
   {
-    title: 'Game Development',
-    desc: 'Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules.',
+    title: 'Video Editing',
+    desc: 'Cinematic edits, motion graphics, and colour-graded films that captivate your audience.',
     side: 'right',
-    emoji: '🎮',
+    image: '/project-video-edit.png',
+    link: 'https://www.instagram.com/reel/DWPRQTfkk6p/?igsh=MTRkcDBoMjdrOHVoYw==',
+    bg: 'linear-gradient(135deg, #0a1228, #162040)',
+  },
+  {
+    title: 'Product Design',
+    desc: 'End-to-end UX/UI design — from wireframes to polished prototypes that users love.',
+    side: 'left',
+    emoji: '🖌️',
     bg: 'linear-gradient(135deg, #0a1228, #162040)',
   },
 ]
@@ -69,9 +79,10 @@ export default function Projects() {
                 {/* Image: pill-shaped */}
                 <div style={{ order: project.side === 'left' ? 2 : 1, position: 'relative' }}>
                   <motion.div
+                    className="project-pill-img"
                     whileHover={{ scale: 1.02 }}
                     style={{
-                      borderRadius: '200px',
+                      borderRadius: '50px',
                       overflow: 'hidden',
                       height: 220,
                       background: project.bg,
@@ -80,24 +91,61 @@ export default function Projects() {
                       position: 'relative',
                     }}
                   >
-                    {project.emoji}
-                    {/* Purple arrow button */}
-                    <motion.div
-                      whileHover={{ scale: 1.15 }}
-                      style={{
-                        position: 'absolute',
-                        bottom: '1.25rem',
-                        right: project.side === 'right' ? '2rem' : undefined,
-                        left: project.side === 'left' ? '2rem' : undefined,
-                        width: 52, height: 52,
-                        borderRadius: '50%',
-                        background: 'var(--purple)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        color: 'white', fontSize: '1.1rem', cursor: 'pointer',
-                      }}
-                    >
-                      ↗
-                    </motion.div>
+                    {/* Real image cover if available */}
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        style={{ objectFit: 'cover', objectPosition: 'top center' }}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    ) : (
+                      <span style={{ position: 'relative', zIndex: 1 }}>{project.emoji}</span>
+                    )}
+
+                    {/* Clickable arrow button */}
+                    {project.link ? (
+                      <motion.a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.15 }}
+                        style={{
+                          position: 'absolute',
+                          bottom: '1.25rem',
+                          right: project.side === 'right' ? '2rem' : undefined,
+                          left: project.side === 'left' ? '2rem' : undefined,
+                          width: 52, height: 52,
+                          borderRadius: '50%',
+                          background: 'var(--purple)',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          color: 'white', fontSize: '1.1rem', cursor: 'pointer',
+                          zIndex: 2,
+                          textDecoration: 'none',
+                        }}
+                      >
+                        ↗
+                      </motion.a>
+                    ) : (
+                      <motion.div
+                        whileHover={{ scale: 1.15 }}
+                        style={{
+                          position: 'absolute',
+                          bottom: '1.25rem',
+                          right: project.side === 'right' ? '2rem' : undefined,
+                          left: project.side === 'left' ? '2rem' : undefined,
+                          width: 52, height: 52,
+                          borderRadius: '50%',
+                          background: 'var(--purple)',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          color: 'white', fontSize: '1.1rem', cursor: 'pointer',
+                          zIndex: 2,
+                        }}
+                      >
+                        ↗
+                      </motion.div>
+                    )}
                   </motion.div>
                 </div>
 
@@ -120,6 +168,28 @@ export default function Projects() {
                   }}>
                     {project.desc}
                   </p>
+                  {project.link && (
+                    <motion.a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ x: 4 }}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.4rem',
+                        marginTop: '1rem',
+                        color: 'var(--purple)',
+                        fontSize: '0.8rem',
+                        fontWeight: 700,
+                        fontFamily: 'Montserrat',
+                        letterSpacing: '0.04em',
+                        textDecoration: 'none',
+                      }}
+                    >
+                      VIEW PROJECT ↗
+                    </motion.a>
+                  )}
                 </div>
               </motion.div>
               {/* Divider */}
@@ -133,8 +203,12 @@ export default function Projects() {
 
       <style>{`
         @media (max-width: 768px) {
-          .project-row { grid-template-columns: 1fr !important; }
+          .project-row { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
           .project-row > div { order: 0 !important; }
+          .project-pill-img { border-radius: 24px !important; height: 200px !important; }
+        }
+        @media (max-width: 480px) {
+          .project-pill-img { height: 160px !important; font-size: 3.5rem !important; }
         }
       `}</style>
     </section>

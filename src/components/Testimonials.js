@@ -68,7 +68,7 @@ export default function Testimonials() {
             }}
           >
             {visible.map((t, i) => (
-              <div key={i} style={{ display: 'flex', gap: '1.75rem', alignItems: 'flex-start' }}>
+              <div key={i} className="testimonial-card" style={{ display: 'flex', gap: '1.75rem', alignItems: 'flex-start' }}>
                 {/* Circle photo with quote badge */}
                 <div style={{ position: 'relative', flexShrink: 0 }}>
                   <div style={{
@@ -163,6 +163,8 @@ export default function Testimonials() {
       <style>{`
         @media (max-width: 640px) {
           .testimonials-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+          .testimonial-card { flex-direction: column !important; align-items: center !important; text-align: center !important; }
+          .testimonial-card > div:first-child { margin-bottom: 0.5rem; }
         }
       `}</style>
     </section>
